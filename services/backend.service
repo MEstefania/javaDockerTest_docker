@@ -1,0 +1,15 @@
+[Unit]
+Description=Servicio de test Devsu
+After=syslog.target network.target
+[Service]
+SuccessExitStatus=143
+User=root
+Group=root
+Type=simple
+WorkingDirectory=/srv/aplicaciones/backend
+
+ExecStart= /usr/bin/java -jar /srv/aplicaciones/backend/Backend.jar
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
